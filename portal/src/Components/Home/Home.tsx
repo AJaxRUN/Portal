@@ -7,8 +7,7 @@ import {
   FormControl
 } from 'react-bootstrap'
 import './Home.css'
-//@ts-ignore
-import withRouter from 'react-router-dom/withRouter'
+import { withRouter } from 'react-router-dom';
 
 const Home = (props: any) => {
   return (
