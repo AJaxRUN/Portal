@@ -5,11 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import CreatePortal from './Components/CreatePortal/CreatePortal'
 import Room from './Components/Room/Room'
+import Navbar from './Components/Navbar/Navbar'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/createPortal" component={CreatePortal} />
