@@ -4,7 +4,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Switch, Route, BrowserRouter } from 'react-router-dom'
 import CreatePortal from './Components/CreatePortal/CreatePortal'
-import Room from './Components/Room/Room'
+import DoorToPortal from './Components/DoorToPortal/DoorToPortal'
 import Navbar from './Components/Navbar/Navbar'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/createPortal" component={CreatePortal} />
-          <Route exact path="/portal/:id" component={Room} />
+          <Route exact path="/portal/:id" component={DoorToPortal} />
         </Switch>
       </div>
     </BrowserRouter>

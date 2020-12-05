@@ -18,7 +18,6 @@ const CreatePortal = (props: any) => {
           }, function(err) {
             console.error('Async: Could not copy text: ', err);
           });
-        // document.execCommand("copy");
     }
     useEffect(() => {
         getNewRoomId()
@@ -27,6 +26,7 @@ const CreatePortal = (props: any) => {
                 setPortalId("/portal/"+response?.portalId)
             })
             .catch(err =>{
+                setPortalId('error')
                 console.log(err)
             });
     }, []);
@@ -36,7 +36,7 @@ const CreatePortal = (props: any) => {
     }
 
     else if(portalId === 'error') {
-        portalIdElement = "Oops! Some error occured please try again later! :("
+        portalIdElement = "Oops!! Some error occured while contacting other dimensions please try again later! :("
     }
 
     else {

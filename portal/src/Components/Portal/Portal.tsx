@@ -28,14 +28,14 @@ function closePeersAndStream(peers: peerObjectsType, stream: MediaStream|undefin
 	closeStream(stream);
 }
 
-function Room() {
+function Portal(props: any) {
 	const socket = useRef<SocketIOClient.Socket>();
 	const myMediaStream = useRef<MediaStream>();
 	const peerObjects = useRef<peerObjectsType>(new Map());
 	const history = useHistory();
 
 	const [streamObjects, setStreamObjects] = useState<streamObjectsType>(new Map()); 
-
+	console.log(props.portalConfig)
 	useEffect(() => {
 		socket.current = io()
 		async function initialise() {
@@ -163,4 +163,4 @@ function Room() {
 	);
 }
 
-export default Room;
+export default Portal;
