@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, createRef } from 'react'
 import {
   Button,
   Modal,
@@ -10,10 +10,9 @@ import './DoorToPortal.css'
 
 const DoorToPortal = (props: any) => {
   const [show, setShow] = useState(true);
-  const myMediaStream = useRef<MediaStream>();
-  const videoRef = useRef<HTMLVideoElement>();
+  const videoRef = createRef<HTMLVideoElement>();
   const [portalConfig, setPortalConfig] = useState({
-    audio: true,
+    audio: false,
     video: true,
   })
   const handleClose = () => setShow(false);
@@ -21,7 +20,10 @@ const DoorToPortal = (props: any) => {
   useEffect(() => {
     navigator.mediaDevices.getUserMedia(portalConfig)
       .then(function(stream) {
-        myMediaStream.current = stream
+        if(videoRef.current && stream) {
+          videoRef.current.srcObject = stream;
+          videoRef.current.play();
+        }
         const audioContext = new AudioContext();
         const analyser = audioContext.createAnalyser();
         const microphone = audioContext.createMediaStreamSource(stream);
@@ -63,6 +65,7 @@ const DoorToPortal = (props: any) => {
             <Row>
               <Col xs={12} md={8}>
                 <video ref={videoRef} />
+                <AudioLevel />
               </Col>
               <Col xs={6} md={4}>
                 .col-xs-6 .col-md-4
